@@ -1,0 +1,39 @@
+# @format
+service: graphql-api
+provider:
+  name: aws
+  description: Backend graphql api
+  runtime: nodejs10.x
+  region: eu-central-1
+  tags:
+    module: backend
+    application: graphql-api
+
+custom:
+  contentCompression: 100
+
+functions:
+  graphqlHandle:
+    handler: src/index.graphqlHandler
+    memorySize: 512
+    timeout: 30
+    package:
+      include:
+        - node_modules/**
+    events:
+      - http:
+          path: ''
+          method: post
+          cors: true
+      - http:
+          path: playground
+          method: post
+          cors: true
+      - http:
+          path: playground
+          method: get
+          cors: true
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-api-compression
