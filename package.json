@@ -9,7 +9,7 @@
     "deploy": "serverless deploy --aws-profile  blaue-nacht-technical"
   },
   "dependencies": {
-    "apollo-server-lambda": "^2.9.7",
+    "apollo-server-lambda": "^2.14.2",
     "axios": "^0.19.2"
   },
   "devDependencies": {
